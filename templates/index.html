@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <title>Weather App</title>
+</head>
+
+<body>
+    <nav class="nav justify-content-center align-items-center"
+        style="background-color: green; color: white; height: 50px;">Weather App
+    </nav>
+    <form style="margin-top: 50px;" method="post">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" class="form-control" name="city" placeholder="Enter city">
+            <button class="btn btn-primary" type="submit">Ara</button>
+        </div>
+
+    </form>
+    {% if data %}
+    <div class="row">
+        <div class="mx-auto mt-4" style="width: 400px;">
+            <h5>country code : {{data.country_code}}</h5>
+            <h5>coordinate : {{data.coordinate}}</h5>
+            <h5>temp : {{data.temp}}</h5>
+            <h5>pressure : {{data.pressure}} </h5>
+            <h5>humidity : {{data.humidity}}</h5>
+        </div>
+    </div>
+    {% else %}
+    <div style="margin-top: 20px;" class="alert alert-danger">To see the weather, enter the city name</div>
+    {% endif %}
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
